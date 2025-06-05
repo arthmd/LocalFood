@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Localfood - Домашняя еда с любовью</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Увеличенный хедер -->
+    <header class="main-header">
+        <div class="header-content">
+            <h1>Localfood</h1>
+            <nav>
+                <a href="/lf-frontend/website/static">Главная</a>
+                <a href="/order">Заказать</a>
+                <a href="#about">О нас</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2025 Localfood. Домашняя еда под видеонаблюдением</p>
+        <p>Телефон: +7 (965) 266-57-04</p>
+    </footer>
+</body>
+</html>
