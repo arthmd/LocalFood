@@ -1,11 +1,22 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
-
+import os
+import psycopg2
+from urllib.parse import urlparse
 app = Flask(__name__,
             template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
             static_folder=os.path.join(os.path.dirname(__file__), 'static'))
 
+DATABASE_URL = os.environ.get('DATABASE_URL')
+result = urlparse(DATABASE_URL)
 
+conn = psycopg2.connect(
+    database=result.path[1:],
+    user=result.username,
+    password=result.password,
+    host=result.hostname,
+    port=result.port
+)
 
 @app.route('/')
 def home():
